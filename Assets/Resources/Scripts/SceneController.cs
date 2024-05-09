@@ -263,7 +263,8 @@ public class SceneController : MonoBehaviour
         if (Phase == GamePhase.Waiting) PlayButton.SetActive(false);
     }
 
-    public void StartGame() {
+    public void StartGame() 
+    {
         PlaySound.Play(0);
         PlayButton.SetActive(false);
         SelectionCanvas.SetActive(false);
@@ -667,18 +668,7 @@ public class SceneController : MonoBehaviour
 
             var postion = Potrait1.transform.position;
             Potrait1.transform.position = new Vector3(-0.4f + ((slotID - 1) * 0.2f), postion.y, postion.z);
-            /*
-            for (int i = 0; i < PlayerCards.Count; i++)
-            {
-                if (PlayerCards[i].GetComponent<Stats>().Id == CurrentCard) SelectionAreas[i].SetActive(false);
 
-                if (PlayerCards[i].GetComponent<Stats>().Id == card.Id)
-                {
-                    SelectionAreas[i].SetActive(true);
-                    var postion = Potrait1.transform.position;
-                    Potrait1.transform.position = new Vector3(-0.4f + i * 0.2f, postion.y, postion.z);
-                }
-            }*/
             CurrentCard = slotID;
             return;
         }
@@ -707,4 +697,9 @@ public class SceneController : MonoBehaviour
     }
 
     #endregion
+
+    public void Surrender()
+    {
+        SceneManager.LoadSceneAsync(1);
+    }
 }

@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotController : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class SlotController : MonoBehaviour
     List<GameObject> PCSlots;
 
     GameObject PlayerDeck;
+    Deck PCDeck;
 
     int CurrentCardSelected { get; set; } = -1;
 
@@ -31,6 +35,7 @@ public class SlotController : MonoBehaviour
     {
         CreateSlots();
         PlayerDeck = GameObject.FindWithTag("PlayerDeck");
+        PCDeck = GameObject.FindWithTag("PCDeck").GetComponent<Deck>();
     }
 
     void Update()
@@ -112,9 +117,68 @@ public class SlotController : MonoBehaviour
         
         PlayerSlots[slotId].GetComponent<Slot>().SelectionEffect[2].SetActive(false);
         PlayerSlots[slotId].GetComponent<Slot>().CardTemplate.SetActive(false);
+        PlayerSlots[slotId].GetComponent<Slot>().HealthBarObject.SetActive(true);
+        PlayerSlots[slotId].GetComponent<Slot>().HealthBarObject.transform.position = new Vector3
+        (
+            slotPosition.x,
+            0.2f,
+            slotPosition.z
+        );
+        Debug.Log("Start SetColor");
+        PlayerSlots[slotId].GetComponent<Slot>().HealthBarObject.GetComponentInChildren<HealthBar>().SetColor(true);
+        Debug.Log("End SetColor");
         PlayerSlots[slotId].GetComponent<Slot>().Status = 0;
 
         HideFreeSlots();
+    }
+
+    IEnumerator GameDelay(float time)
+    {
+        //Debug.Log("Start delay");
+        yield return new WaitForSeconds(10f);
+        //Debug.Log("End delay");
+    }
+
+    public void PCInvokeCard()
+    {
+        
+        StartCoroutine(GameDelay(12));
+        Debug.Log("End delay");
+        var slot = PCSlots.Where(s => s.GetComponent<Slot>().Card == null).FirstOrDefault().GetComponent<Slot>();
+        
+        //Random invoke (hard data)
+        int cardIndex = UnityEngine.Random.Range(0, 10);
+
+        var card = PCDeck.Cards[cardIndex];
+
+        PCSlots[slot.SlotID].GetComponent<Slot>().Card = Instantiate(card);
+        PCSlots[slot.SlotID].GetComponent<Slot>().Card.SetActive(true);
+
+        PCSlots[slot.SlotID].GetComponent<Slot>().IsPlayer = false;
+
+        var slotPosition = PCSlots[slot.SlotID].GetComponent<Slot>().transform.position;
+        var cardPrefabPosition = PCSlots[slot.SlotID].GetComponent<Slot>().Card.transform.position;
+
+        PCSlots[slot.SlotID].GetComponent<Slot>().Card.transform.position = new Vector3
+        (
+            slotPosition.x,
+            cardPrefabPosition.y,
+            slotPosition.z
+        );
+
+        PCSlots[slot.SlotID].GetComponent<Slot>().Card.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+
+        //Health Bar
+        PCSlots[slot.SlotID].GetComponent<Slot>().HealthBarObject.SetActive(true);
+        PCSlots[slot.SlotID].GetComponent<Slot>().HealthBarObject.transform.position = new Vector3
+        (
+            slotPosition.x,
+            0.2f,
+            slotPosition.z
+        );
+
+        //PCSlots[slot.SlotID].GetComponent<Slot>().HealthBar.GetComponent<HealthBar>().SetColor(false);
+        PCSlots[slot.SlotID].GetComponent<Slot>().HealthBarObject.GetComponentInChildren<HealthBar>().SetColor(false);
     }
 
     #endregion

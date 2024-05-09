@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1BEEB11F-D888-B81F-3E84-9DA6490704C7}</ProjectGuid>
+    <ProjectGuid>{C2940B0E-8622-94EC-FB05-AB44F9482128}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -58,6 +58,7 @@
     <Analyzer Include="E:\Program Files\Unity Hub\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\Main Menu\MainMenuController.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\Resources\Scripts\Select.cs" />
     <Compile Include="Assets\Resources\Scripts\Deck.cs" />
@@ -65,18 +66,25 @@
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Resources\Scripts\CardMannager\SelectionPhaseController.cs" />
     <Compile Include="Assets\Resources\Scripts\PlatformSelect.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\Resources\Scripts\PCController.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\Resources\Scripts\IAbility.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Resources\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Ability.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
+    <Compile Include="Assets\Resources\Scripts\Main Menu\CardController.cs" />
     <Compile Include="Assets\Resources\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\Resources\Scripts\SlotController.cs" />
     <Compile Include="Assets\Resources\Scripts\Slot.cs" />
     <Compile Include="Assets\Resources\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Resources\Scripts\CardHealthBar.cs" />
+    <Compile Include="Assets\Resources\Scripts\Hero.cs" />
+    <Compile Include="Assets\Resources\Scripts\Card.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -829,27 +837,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CFXREditor.csproj">
-      <Project>{266B2356-EA2D-1E26-9A70-95749D48C15F}</Project>
+      <Project>{43EEF4B0-0C97-E2F3-0480-A745890102A1}</Project>
       <Name>CFXREditor</Name>
     </ProjectReference>
     <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{B23FA417-F4EF-481E-8BE4-B4038D058850}</Project>
+      <Project>{912AFFFA-67BD-2165-88EE-B41296386219}</Project>
       <Name>ToonyColorsPro.Demo.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="CFXRRuntime.csproj">
-      <Project>{E436F394-8307-ABC2-0942-5111D5A0B919}</Project>
+      <Project>{CA417D29-21F4-FBA9-AB7B-C7B4A3F60C63}</Project>
       <Name>CFXRRuntime</Name>
     </ProjectReference>
     <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{DD29EE26-643A-3579-4BFC-31B74598DB15}</Project>
+      <Project>{5E86FA41-7EB0-5EF9-CFC2-3B6E20BDE769}</Project>
       <Name>CFXRDemo</Name>
     </ProjectReference>
     <ProjectReference Include="CFXR.WelcomeScreen.csproj">
-      <Project>{BEBE9A1F-B91D-2A1A-4FE7-310D17D276FD}</Project>
+      <Project>{BD99C2F9-4D5D-8CB0-18B0-BCE4F31D32BB}</Project>
       <Name>CFXR.WelcomeScreen</Name>
     </ProjectReference>
     <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{F8898524-9FCE-E06B-0D78-E1711F99FABE}</Project>
+      <Project>{13BCBAAB-BB12-5D61-B5F9-6CD4D6B65967}</Project>
       <Name>KinoBloom.Runtime</Name>
     </ProjectReference>
   </ItemGroup>

@@ -23,11 +23,6 @@ public class Deck : MonoBehaviour
     {
         SlotController.ShowFreeSlots();
         CurrentIndexForInvoke = index;
-        /*
-        Cards[index] = Instantiate(Cards[index]);
-        Cards[index].SetActive(true);
-        Cards[index].transform.position = new Vector3(0, 0, 0);
-        */
     }
 
     public GameObject InvokeCard()

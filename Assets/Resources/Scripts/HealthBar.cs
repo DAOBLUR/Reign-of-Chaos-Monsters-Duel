@@ -16,7 +16,11 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         //if(Death) Death.SetActive(false);
-        Slider.maxValue = Card.Health;
+        if(Card)
+        {
+            Slider.maxValue = Card.Health;
+        }
+        
         Slider.minValue = 0;
 
         if(Fill) Fill.color = Color.red;
@@ -24,13 +28,26 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        Slider.value = Card.CurrentHealth;
+        if(Card != null) Slider.value = Card.CurrentHealth;
         //Slider3D.value = Slider2D.value;
 
-        if(Card.CurrentHealth < 1 || Card == null) 
+        if( Card && (Card.CurrentHealth < 1 || Card == null) && HealthSlider) 
         {
             //if(Death) Death.SetActive(true);
             HealthSlider.SetActive(false);
+        }
+    }
+
+    public void SetColor(bool isPlayer)
+    {
+        Debug.Log("HealthBar.SetColot: "+ isPlayer);
+        if(isPlayer)
+        {
+            Fill.color = Color.green;
+        }
+        else
+        {
+            Fill.color = Color.red;
         }
     }
 

@@ -18,13 +18,25 @@ public class Slot: MonoBehaviour
 
     [Header("GameObjects")]
     public GameObject HitEffect;
-    public GameObject HealthBar;
+    public GameObject HealthBarObject;
+    public HealthBar HealthBar;
+
     public GameObject CardTemplate;
     public List<GameObject> SelectionEffect;
     public GameObject Card { get; set; }
+
+    /// <summary>
+    /// 2 = Invoke
+    /// </summary>
     public int Status { get; set; }
 
     #endregion
+
+    private void Start()
+    {
+        HealthBarObject = Instantiate(HealthBarObject);
+        HealthBarObject.SetActive(false);
+    }
 
     public void ActiveSelectionCard()
     {

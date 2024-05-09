@@ -8,6 +8,8 @@ TagManager:
   - Potrait
   - Unit
   - PlayerDeck
+  - FxTemporaire
+  - PCDeck
   layers:
   - Default
   - TransparentFX
