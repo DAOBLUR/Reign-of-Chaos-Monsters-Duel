@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SlotController : MonoBehaviour
 {
+    int Mana, Mana2;
     #region Public
 
     public GameObject SlotPrefab;
@@ -36,6 +37,7 @@ public class SlotController : MonoBehaviour
         CreateSlots();
         PlayerDeck = GameObject.FindWithTag("PlayerDeck");
         PCDeck = GameObject.FindWithTag("PCDeck").GetComponent<Deck>();
+        Mana = 4;
     }
 
     void Update()
@@ -102,6 +104,11 @@ public class SlotController : MonoBehaviour
     {
         var card = PlayerDeck.GetComponent<Deck>().InvokeCard();
 
+        var getStats = card.GetComponent<Stats>();
+
+        Debug.Log(getStats.Stars + "---------");
+        if (getStats.Stars > Mana) return;
+
         PlayerSlots[slotId].GetComponent<Slot>().Card = Instantiate(card);
         PlayerSlots[slotId].GetComponent<Slot>().Card.SetActive(true);
 
@@ -130,6 +137,7 @@ public class SlotController : MonoBehaviour
         PlayerSlots[slotId].GetComponent<Slot>().Status = 0;
 
         HideFreeSlots();
+        Mana++;
     }
 
     IEnumerator GameDelay(float time)
